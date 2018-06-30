@@ -1,5 +1,6 @@
 package com.r4sh33d.journalapp.utility;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,6 +9,8 @@ import java.util.Locale;
 public class Utils {
 
     public static final String SHORT_FULL_DATE = "dd MMM yyyy";
+    public static final String MYSQL_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String MYSQL_DATE_ONLY = "yyyy-MM-dd";
 
     public static String getRelativeSentFromMessageWithTime(long timeInMillis) {
         String relativeTime = getRelativeTime(timeInMillis, false);
@@ -56,5 +59,17 @@ public class Utils {
         } else {
             return formatDate(date.getTime(), SHORT_FULL_DATE);
         }
+    }
+
+    public static long dateStringToTimeInMillis(String dateString, String format) {
+        Date date;
+        SimpleDateFormat df = new SimpleDateFormat(format,Locale.ENGLISH);
+        try {
+            date = df.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return date.getTime();
     }
 }

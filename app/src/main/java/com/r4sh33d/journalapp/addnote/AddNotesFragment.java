@@ -35,6 +35,8 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     TextView noteBodyTextView;
     @BindView(R.id.note_title_textview)
     TextView noteTitleTextView;
+    boolean isEdit = false;
+    private long noteTimeCreated;
 
 
     public static AddNotesFragment newInstance(Note note) {
@@ -61,15 +63,18 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MainActivity) getActivity()).setDrawerIconToBack();
+
         addNotesPresenter = new AddNotePresenter(this);
         if (getArguments() != null && getArguments().getParcelable(ARGS_NOTE_KEY) != null) {
             //We want to edit note
+            isEdit = true;
+            ((MainActivity) getActivity()).setDrawerIconToBack();
             setToolbarTitle("Edit Note");
             Note note = getArguments().getParcelable(ARGS_NOTE_KEY);
             //prepopulate the fields with the details of the note to edit
             prepopulateFields(note);
         } else {
+            ((MainActivity) getActivity()).setDrawerIconToHome();
             // We want to add new note
             setToolbarTitle("Add new note ");
         }
@@ -78,25 +83,33 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     private void prepopulateFields(Note note) {
         noteBodyTextView.setText(note.body);
         noteTitleTextView.setText(note.title);
+        noteTimeCreated = note.timeCreated;
     }
 
 
     @OnClick(R.id.save_button)
-    void onSaveButtonClick(){
+    void onSaveButtonClick() {
+        //Edit the note or save for the first time based on where the user is comming from
         String title = noteTitleTextView.getText().toString();
         String body = noteBodyTextView.getText().toString();
-        if (TextUtils.isEmpty(title)){
+        if (TextUtils.isEmpty(title)) {
             showToast("Enter a valid title to proceed");
             return;
         }
-        if (TextUtils.isEmpty(body)){
+        if (TextUtils.isEmpty(body)) {
             showToast("Enter the note's body to proceed");
             return;
         }
+        Note noteToSave = new Note(title, body,
+                noteTimeCreated == 0 ? System.currentTimeMillis() : noteTimeCreated,
+                System.currentTimeMillis());
 
-        Note noteToSave = new Note(title , body , System.currentTimeMillis() , System.currentTimeMillis());
+        if (isEdit) {
+            addNotesPresenter.editNote(noteToSave);
+        } else {
+            addNotesPresenter.addNote(noteToSave);
+        }
     }
-
 
 
     @Override
@@ -106,11 +119,11 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
 
     @Override
     public void onNotesSaved(Note note) {
-         getActivity().getSupportFragmentManager().popBackStack();
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 
     @Override
-    public void onNotesSuccessfullyEdited (Note note) {
+    public void onNotesSuccessfullyEdited(Note note) {
         getActivity().getSupportFragmentManager().popBackStack();
     }
 

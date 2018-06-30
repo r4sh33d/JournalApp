@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.r4sh33d.journalapp.R;
 import com.r4sh33d.journalapp.models.Note;
+import com.r4sh33d.journalapp.utility.Utils;
 
 import java.util.ArrayList;
 
@@ -31,10 +32,12 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
 
     @Override
     public void onBindViewHolder(@NonNull NotesItemHolder holder, int position) {
-         Note currentNote = notesList.get(position);
-         holder.noteTitle.setText(currentNote.title);
-         holder.noteBody.setText(currentNote.body);
-         //TODO set created time from relative formatting
+        Note currentNote = notesList.get(position);
+        holder.noteTitle.setText(currentNote.title);
+        holder.noteBody.setText(currentNote.body);
+        holder.timeCreated.setText(Utils.getRelativeSentFromMessageWithTime(currentNote.timeCreated));
+
+        //TODO set created time from relative formatting
     }
 
     void swapData(ArrayList<Note> newNotesList) {
