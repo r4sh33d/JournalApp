@@ -16,6 +16,7 @@ public interface AddNotesContract {
     }
 
     interface View  extends BaseContract.view{
+
         void moveToNextStep();
 
         void onNotesSaved(Note note);
