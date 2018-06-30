@@ -31,7 +31,7 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     @BindView(R.id.note_body_textview)
     TextView noteBodyTextView;
     @BindView(R.id.note_title_textview)
-    TextView noteTitleText;
+    TextView noteTitleTextView;
 
 
     public static AddNotesFragment newInstance(Note note) {
@@ -74,6 +74,8 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     }
 
     private void prepopulateFields(Note note) {
+        noteBodyTextView.setText(note.body);
+        noteTitleTextView.setText(note.title);
 
     }
 
