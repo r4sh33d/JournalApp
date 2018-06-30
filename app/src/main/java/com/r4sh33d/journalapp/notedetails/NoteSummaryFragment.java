@@ -45,6 +45,7 @@ public class NoteSummaryFragment extends BaseFragment {
     private DatabaseReference mNotesReference;
     FirebaseUser user;
     Note currentNote;
+
     public static NoteSummaryFragment newInstance(String firebaseNoteKey) {
         Bundle args = new Bundle();
         args.putString(FIREBASE_NOTE_KEY, firebaseNoteKey);

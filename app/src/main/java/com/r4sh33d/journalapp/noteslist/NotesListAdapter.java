@@ -1,6 +1,9 @@
 package com.r4sh33d.journalapp.noteslist;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.r4sh33d.journalapp.R;
+import com.r4sh33d.journalapp.addnote.AddNotesFragment;
 import com.r4sh33d.journalapp.models.Note;
+import com.r4sh33d.journalapp.notedetails.NoteSummaryFragment;
 import com.r4sh33d.journalapp.utility.Utils;
 
 import java.util.ArrayList;
@@ -71,7 +76,11 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
 
         @Override
         public void onClick(View v) {
-
+            FragmentTransaction transaction = ((AppCompatActivity)v.getContext()).getSupportFragmentManager().beginTransaction();
+            Note note  = notesList.get(getAdapterPosition());
+            transaction.replace(R.id.content_frame, NoteSummaryFragment.newInstance(note.uniqueKey));
+            transaction.commit();
         }
+
     }
 }
