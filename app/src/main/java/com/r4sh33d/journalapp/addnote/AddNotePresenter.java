@@ -18,6 +18,14 @@ public class AddNotePresenter implements AddNotesContract.Presenter {
     public void start() {}
 
     @Override
-    public void addNote(Note note) {}
+    public void addNote(Note note) {
+
+    }
+
+    @Override
+    public void editNote(Note note) {
+
+    }
+
 
 }

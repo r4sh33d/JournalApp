@@ -7,6 +7,7 @@ public interface AddNotesContract {
     interface Presenter  {
         void start();
         public void addNote(Note note);
+        public void editNote(Note note);
     }
 
     interface View  {
