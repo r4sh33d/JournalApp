@@ -63,7 +63,6 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         addNotesPresenter = new AddNotePresenter(this);
         if (getArguments() != null && getArguments().getParcelable(ARGS_NOTE_KEY) != null) {
             //We want to edit note
