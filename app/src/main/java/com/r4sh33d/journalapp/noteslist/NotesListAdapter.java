@@ -34,7 +34,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
          Note currentNote = notesList.get(position);
          holder.noteTitle.setText(currentNote.title);
          holder.noteBody.setText(currentNote.body);
-         //TODO set created time form relative formatting
+         //TODO set created time from relative formatting
     }
 
     void swapData(ArrayList<Note> newNotesList) {
