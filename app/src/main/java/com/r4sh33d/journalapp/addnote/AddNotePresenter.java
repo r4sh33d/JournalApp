@@ -19,10 +19,10 @@ import java.util.Map;
  */
 
 public class AddNotePresenter implements AddNotesContract.Presenter {
+    private static final String TAG = AddNotePresenter.class.getSimpleName();
     private AddNotesContract.View view;
     DatabaseReference mNotesReference;
     FirebaseUser user;
-    private static final String TAG = AddNotePresenter.class.getSimpleName();
 
     AddNotePresenter(AddNotesContract.View view) {
         this.view = view;
@@ -55,7 +55,7 @@ public class AddNotePresenter implements AddNotesContract.Presenter {
     @Override
     public void editNote(Note note) {
         Map<String, Object> notesUpdate = new HashMap<>();
-        notesUpdate.put(note.uniqueKey , note);
+        notesUpdate.put(note.uniqueKey, note);
         mNotesReference.updateChildren(notesUpdate,
                 (databaseError, databaseReference) -> {
                     if (view != null) {

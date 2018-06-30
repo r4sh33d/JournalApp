@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.r4sh33d.journalapp.R;
+import com.r4sh33d.journalapp.addnote.AddNotesFragment;
 import com.r4sh33d.journalapp.noteslist.NotesListFragment;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity
                 navigateToFragment(new NotesListFragment());
                 break;
             case R.id.nav_add_note:
-                navigateToFragment(new NotesListFragment());
+                navigateToFragment(AddNotesFragment.newInstance(null));
                 break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

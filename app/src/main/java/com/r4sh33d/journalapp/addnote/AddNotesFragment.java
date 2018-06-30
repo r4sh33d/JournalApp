@@ -39,7 +39,7 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     private long noteTimeCreated;
 
 
-    public static AddNotesFragment newInstance(Note note) {
+    public static AddNotesFragment newInstance (Note note) {
         Bundle args = new Bundle();
         args.putParcelable(ARGS_NOTE_KEY, note);
         AddNotesFragment fragment = new AddNotesFragment();
@@ -108,6 +108,7 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
         } else {
             addNotesPresenter.addNote(noteToSave);
         }
+
     }
 
 
