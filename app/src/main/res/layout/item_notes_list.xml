@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="?selectableItemBackground"
+    android:layout_margin="16dp"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginRight="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/time_created_textview"
+            android:id="@+id/note_title_textview"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:text="First Note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/time_created_textview" />
+
+        <TextView
+            android:id="@+id/note_time_created_textview"
+            android:layout_alignParentEnd="true"
+            android:text="Yesterday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/note_body_textview"
+        tools:text="This is my first note. I'm adding it to test"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

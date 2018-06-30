@@ -74,7 +74,15 @@ public class NotesListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         notesListAdapter = new NotesListAdapter(new ArrayList<>());
         user = FirebaseAuth.getInstance().getCurrentUser();
-        mNotesReference = FirebaseDatabase.getInstance().getReference("notes").child(user.getUid());
+        mNotesReference = FirebaseDatabase.getInstance().getReference("journalApp")
+                .child(user.getUid()).child("notes");
+        mNotesReference.addChildEventListener(mNotesChildEventListener);
+    }
 
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mNotesReference.removeEventListener(mNotesChildEventListener);
     }
 }
