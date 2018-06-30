@@ -8,9 +8,14 @@ public class Note implements Parcelable {
     public String body;
     public long timeCreated;
     public long lastEditTime;
+    public  String uniqueKey;
 
     public Note() {
+    }
 
+    public Note(String title, String body, long timeCreated, long lastEditTime, String uniqueKey) {
+        this(title, body, timeCreated, lastEditTime);
+        this.uniqueKey = uniqueKey;
     }
 
     public Note(String title, String body, long timeCreated, long lastEditTime) {

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,13 @@ import com.r4sh33d.journalapp.models.Note;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class AddNotesFragment extends BaseFragment implements AddNotesContract.View {
     private static final String TAG = AddNotesFragment.class.getSimpleName();
     private static final String ARGS_NOTE_KEY = "note_key";
@@ -64,7 +67,6 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
             //We want to edit note
             setToolbarTitle("Edit Note");
             Note note = getArguments().getParcelable(ARGS_NOTE_KEY);
-
             //prepopulate the fields with the details of the note to edit
             prepopulateFields(note);
         } else {
@@ -76,12 +78,40 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
     private void prepopulateFields(Note note) {
         noteBodyTextView.setText(note.body);
         noteTitleTextView.setText(note.title);
-
     }
+
+
+    @OnClick(R.id.save_button)
+    void onSaveButtonClick(){
+        String title = noteTitleTextView.getText().toString();
+        String body = noteBodyTextView.getText().toString();
+        if (TextUtils.isEmpty(title)){
+            showToast("Enter a valid title to proceed");
+            return;
+        }
+        if (TextUtils.isEmpty(body)){
+            showToast("Enter the note's body to proceed");
+            return;
+        }
+
+        Note noteToSave = new Note(title , body , System.currentTimeMillis() , System.currentTimeMillis());
+    }
+
 
 
     @Override
     public void moveToNextStep() {
 
     }
+
+    @Override
+    public void onNotesSaved(Note note) {
+         getActivity().getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void onNotesSuccessfullyEdited (Note note) {
+        getActivity().getSupportFragmentManager().popBackStack();
+    }
+
 }

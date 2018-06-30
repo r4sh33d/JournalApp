@@ -10,7 +10,6 @@ public class Utils {
     public static final String SHORT_FULL_DATE = "dd MMM yyyy";
 
     public static String getRelativeSentFromMessageWithTime(long timeInMillis) {
-
         String relativeTime = getRelativeTime(timeInMillis, false);
         Date date = new Date(timeInMillis);
         String msg = "Sent %s at %s";
@@ -18,7 +17,6 @@ public class Utils {
         String clockTime = formatDate(date, "HH:mm");
 
         switch (relativeTime) {
-
             case "Today":
                 return String.format(msg, "today", clockTime);
             case "Yesterday":
@@ -29,7 +27,6 @@ public class Utils {
     }
 
     public static String formatDate(Date date, String format) {
-
         SimpleDateFormat simpleDateFormat = new
                 SimpleDateFormat(format, Locale.getDefault());
         return simpleDateFormat.format(date);
