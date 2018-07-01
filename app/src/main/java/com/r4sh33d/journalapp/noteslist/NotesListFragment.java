@@ -102,8 +102,8 @@ public class NotesListFragment extends BaseFragment implements  NoteListContract
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         mNotesReference.removeEventListener(mNotesChildEventListener);
+        super.onDestroyView();
     }
 
 

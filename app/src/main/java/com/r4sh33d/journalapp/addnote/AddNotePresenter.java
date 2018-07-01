@@ -41,13 +41,10 @@ public class AddNotePresenter implements AddNotesContract.Presenter {
         DatabaseReference noteReference = mNotesReference.push();
         note.uniqueKey = noteReference.getKey();
         noteReference.setValue(note, (databaseError, databaseReference) -> {
-            if (view != null ) {
-                if (databaseError != null) {
-                    Log.d(TAG, "Note could not be saved " + databaseError.getMessage());
-                    view.showError("Unable to save note, Please try again");
-                } else {
-                    view.onNotesSaved(note);
-                }
+            if (databaseError != null) {
+                Log.d(TAG, "Note could not be saved " + databaseError.getMessage());
+            } else {
+                Log.d(TAG, "Note saved Successfully");
             }
         });
     }
@@ -58,14 +55,12 @@ public class AddNotePresenter implements AddNotesContract.Presenter {
         notesUpdate.put(note.uniqueKey, note);
         mNotesReference.updateChildren(notesUpdate,
                 (databaseError, databaseReference) -> {
-                    if (view != null) {
-                        if (databaseError != null) {
-                            Log.d(TAG, "Note could not be edited " + databaseError.getMessage());
-                            view.showError("Unable to edit note, Please try again");
-                        } else {
-                            view.onNotesSuccessfullyEdited(note);
-                        }
+                    if (databaseError != null) {
+                        Log.d(TAG, "Note could not be edited " + databaseError.getMessage());
+                    } else {
+                        Log.d(TAG, "Note Successfully edited");
                     }
+
                 });
     }
 

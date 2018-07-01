@@ -50,8 +50,19 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
     }
 
     void addNote(Note note) {
-        this.notesList.add(note);
+        if (!isPresentInTheList(note)){
+            notesList.add(0, note);
+        }
         notifyDataSetChanged();
+    }
+
+    private boolean isPresentInTheList(Note newNote){
+        for (Note note: notesList){
+            if (note.uniqueKey.equalsIgnoreCase(newNote.uniqueKey)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -76,8 +87,8 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
 
         @Override
         public void onClick(View v) {
-            FragmentTransaction transaction = ((AppCompatActivity)v.getContext()).getSupportFragmentManager().beginTransaction();
-            Note note  = notesList.get(getAdapterPosition());
+            FragmentTransaction transaction = ((AppCompatActivity) v.getContext()).getSupportFragmentManager().beginTransaction();
+            Note note = notesList.get(getAdapterPosition());
             transaction.replace(R.id.content_frame, NoteSummaryFragment.newInstance(note.uniqueKey));
             transaction.addToBackStack(null).commit();
         }
