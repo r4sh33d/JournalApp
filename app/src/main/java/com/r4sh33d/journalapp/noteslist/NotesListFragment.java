@@ -86,6 +86,7 @@ public class NotesListFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MainActivity) getActivity()).setDrawerIconToHome();
+        setToolbarTitle("Note Lists");
         notesListAdapter = new NotesListAdapter(new ArrayList<>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(notesListAdapter);

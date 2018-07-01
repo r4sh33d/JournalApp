@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         drawerToggle = new ActionBarDrawerToggle(

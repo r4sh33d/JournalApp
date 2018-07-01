@@ -73,6 +73,7 @@ public class NoteSummaryFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MainActivity) getActivity()).setDrawerIconToBack();
+        setToolbarTitle("Note Details");
         String notesKey = getArguments().getString(FIREBASE_NOTE_KEY);
         user = FirebaseAuth.getInstance().getCurrentUser();
         mNotesReference = FirebaseDatabase.getInstance().getReference("journalApp")

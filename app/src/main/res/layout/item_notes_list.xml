@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginEnd="16dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_toStartOf="@id/note_time_created_textview" />
 
         <TextView
@@ -39,6 +41,7 @@
     </RelativeLayout>
 
     <TextView
+        android:ellipsize="end"
         android:id="@+id/note_body_textview"
         tools:text="This is my first note. I'm adding it to test"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
