@@ -6,7 +6,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ExampleUnitTest {
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+public class UtilsTests {
+
+    @Test
+    public void addition_isCorrect() {
+        assertEquals(4, 2 + 2);
+    }
 
     @Test
     public void formatDate() throws Exception {
@@ -14,5 +24,4 @@ public class ExampleUnitTest {
         String actual = Utils.formatDate("2000-11-12");
         assertEquals(expected, actual);
     }
-
 }

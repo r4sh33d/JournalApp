@@ -32,10 +32,9 @@ public class TestSignInActivity {
         onView(withText("Sign in with Google"))
                 .check(matches(isDisplayed()));
         //Email sign in
-        onView(withText("Sign in with emai;"))
+        onView(withText("Sign in with email;"))
                 .check(matches(isDisplayed()));
         //If we reach without exception, Test is successful.
         //The sign in screen is set up correctly.
-
     }
 }
