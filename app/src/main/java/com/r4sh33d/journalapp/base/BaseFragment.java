@@ -31,6 +31,9 @@ public abstract class BaseFragment  extends Fragment implements  BaseContract.vi
     }
 
     public AlertDialog showError(CharSequence message) {
+        if (getContext() == null){
+            return null;
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
                 .setMessage(message)
                 .setPositiveButton("Ok", (dialogInterface, i) -> dialogInterface.dismiss());

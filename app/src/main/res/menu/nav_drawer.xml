@@ -7,11 +7,7 @@
         <item
             android:id="@+id/nav_active_notes_list"
             android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Active Medications" />
-        <item
-            android:id="@+id/nav_add_note"
-            android:icon="@drawable/ic_note_add_black_24dp"
-            android:title="Select Medications by Month" />
+            android:title="Notes List" />
     </group>
 
 </menu>

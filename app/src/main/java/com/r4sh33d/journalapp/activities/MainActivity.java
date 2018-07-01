@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.r4sh33d.journalapp.R;
 import com.r4sh33d.journalapp.addnote.AddNotesFragment;
 import com.r4sh33d.journalapp.noteslist.NotesListFragment;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         drawerToggle = new ActionBarDrawerToggle(
@@ -147,9 +149,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_active_notes_list:
                 navigateToFragment(new NotesListFragment());
                 break;
-            case R.id.nav_add_note:
+           /* case R.id.nav_add_note:
                 navigateToFragment(AddNotesFragment.newInstance(null));
-                break;
+                break;*/
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

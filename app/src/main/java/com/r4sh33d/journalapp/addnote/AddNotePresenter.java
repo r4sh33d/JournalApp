@@ -41,7 +41,7 @@ public class AddNotePresenter implements AddNotesContract.Presenter {
         DatabaseReference noteReference = mNotesReference.push();
         note.uniqueKey = noteReference.getKey();
         noteReference.setValue(note, (databaseError, databaseReference) -> {
-            if (view != null) {
+            if (view != null ) {
                 if (databaseError != null) {
                     Log.d(TAG, "Note could not be saved " + databaseError.getMessage());
                     view.showError("Unable to save note, Please try again");

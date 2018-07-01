@@ -15,7 +15,7 @@ public class Utils {
     public static String getRelativeSentFromMessageWithTime(long timeInMillis) {
         String relativeTime = getRelativeTime(timeInMillis, false);
         Date date = new Date(timeInMillis);
-        String msg = "Sent %s at %s";
+        String msg = "Saved %s at %s";
 
         String clockTime = formatDate(date, "HH:mm");
 

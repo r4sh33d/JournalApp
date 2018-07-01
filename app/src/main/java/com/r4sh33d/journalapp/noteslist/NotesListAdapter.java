@@ -79,7 +79,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesListAdapter.Note
             FragmentTransaction transaction = ((AppCompatActivity)v.getContext()).getSupportFragmentManager().beginTransaction();
             Note note  = notesList.get(getAdapterPosition());
             transaction.replace(R.id.content_frame, NoteSummaryFragment.newInstance(note.uniqueKey));
-            transaction.commit();
+            transaction.addToBackStack(null).commit();
         }
 
     }

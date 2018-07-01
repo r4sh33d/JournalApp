@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.r4sh33d.journalapp.R;
+import com.r4sh33d.journalapp.activities.MainActivity;
 import com.r4sh33d.journalapp.addnote.AddNotesFragment;
 import com.r4sh33d.journalapp.base.BaseFragment;
 import com.r4sh33d.journalapp.models.Note;
@@ -84,6 +85,7 @@ public class NotesListFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((MainActivity) getActivity()).setDrawerIconToHome();
         notesListAdapter = new NotesListAdapter(new ArrayList<>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(notesListAdapter);
@@ -103,6 +105,6 @@ public class NotesListFragment extends BaseFragment {
 
     @OnClick(R.id.fab)
     public void onClickFab(){
-        navigateToFragment(AddNotesFragment.newInstance(null));
+        navigateToFragmentWithBackStack(AddNotesFragment.newInstance(null));
     }
 }
