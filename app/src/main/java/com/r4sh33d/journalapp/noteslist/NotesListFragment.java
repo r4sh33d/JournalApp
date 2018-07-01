@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,7 +34,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NotesListFragment extends BaseFragment {
+public class NotesListFragment extends BaseFragment implements  NoteListContract.View {
     private DatabaseReference mNotesReference;
     FirebaseUser user;
     NotesListAdapter notesListAdapter;
@@ -86,10 +87,12 @@ public class NotesListFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MainActivity) getActivity()).setDrawerIconToHome();
-        setToolbarTitle("Note Lists");
+        setToolbarTitle(getString(R.string.note_lists));
         notesListAdapter = new NotesListAdapter(new ArrayList<>());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(notesListAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
+                DividerItemDecoration.VERTICAL));
         user = FirebaseAuth.getInstance().getCurrentUser();
         mNotesReference = FirebaseDatabase.getInstance().getReference("journalApp")
                 .child(user.getUid()).child("notes");
@@ -107,5 +110,15 @@ public class NotesListFragment extends BaseFragment {
     @OnClick(R.id.fab)
     public void onClickFab(){
         navigateToFragmentWithBackStack(AddNotesFragment.newInstance(null));
+    }
+
+    @Override
+    public void moveToNextStep() {
+
+    }
+
+    @Override
+    public void showNotes() {
+
     }
 }

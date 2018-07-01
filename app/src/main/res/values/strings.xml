@@ -13,4 +13,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="note_lists">Note Lists</string>
+    <string name="edit_notes">Edit Note</string>
+    <string name="enter_valid_title">Enter a valid title to proceed</string>
+    <string name="enter_notes_body">Enter the note\'s body to proceed</string>
+    <string name="notes_saved">Note successfully saved</string>
+    <string name="note_edited">Note successfully Edited</string>
+    <string name="title">Title</string>
+    <string name="type_the_body_of_the_note_here">Type the body of the note here</string>
+    <string name="save">Save</string>
+    <string name="yesterday">Yesterday</string>
 </resources>

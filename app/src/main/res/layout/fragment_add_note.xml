@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:drawablePadding="10dp"
-                android:hint="Title"
+                android:hint="@string/title"
                 android:imeOptions="actionDone"
                 android:inputType="textEmailAddress"
                 android:lineSpacingExtra="4sp"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:drawablePadding="10dp"
-                android:hint="Type the body of the note here"
+                android:hint="@string/type_the_body_of_the_note_here"
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
                 android:ems="10"
@@ -58,7 +58,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:text="Save"
+        android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

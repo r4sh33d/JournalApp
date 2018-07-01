@@ -69,7 +69,7 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
         if (getArguments() != null && getArguments().getParcelable(ARGS_NOTE_KEY) != null) {
             //We want to edit note
             isEdit = true;
-            setToolbarTitle("Edit Note");
+            setToolbarTitle(getString(R.string.edit_notes));
             Note note = getArguments().getParcelable(ARGS_NOTE_KEY);
             //prepopulate the fields with the details of the note to edit
             prepopulateFields(note);
@@ -92,11 +92,11 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
         String title = noteTitleEditText.getText().toString();
         String body = noteBodyEditText.getText().toString();
         if (TextUtils.isEmpty(title)) {
-            showToast("Enter a valid title to proceed");
+            showToast(getString(R.string.enter_valid_title));
             return;
         }
         if (TextUtils.isEmpty(body)) {
-            showToast("Enter the note's body to proceed");
+            showToast(getString(R.string.enter_notes_body));
             return;
         }
         Note noteToSave = new Note(title, body,
@@ -121,13 +121,13 @@ public class AddNotesFragment extends BaseFragment implements AddNotesContract.V
 
     @Override
     public void onNotesSaved(Note note) {
-        showToast("Note successfully saved");
+        showToast(getString(R.string.notes_saved));
 
     }
 
     @Override
     public void onNotesSuccessfullyEdited(Note note) {
-        showToast("Note successfully Edited");
+        showToast(getString(R.string.note_edited));
     }
 
 }
