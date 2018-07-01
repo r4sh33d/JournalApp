@@ -148,9 +148,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_active_notes_list:
                 navigateToFragment(new NotesListFragment());
                 break;
-           /* case R.id.nav_add_note:
-                navigateToFragment(AddNotesFragment.newInstance(null));
-                break;*/
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

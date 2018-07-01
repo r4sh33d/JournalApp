@@ -41,6 +41,7 @@
     </RelativeLayout>
 
     <TextView
+        android:maxLines="2"
         android:ellipsize="end"
         android:id="@+id/note_body_textview"
         tools:text="This is my first note. I'm adding it to test"

@@ -11,6 +11,7 @@ public class Utils {
     public static final String SHORT_FULL_DATE = "dd MMM yyyy";
     public static final String MYSQL_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String MYSQL_DATE_ONLY = "yyyy-MM-dd";
+    private static final String FULL_DATE = "dd MMMM yyyy";
 
     public static String getRelativeSentFromMessageWithTime(long timeInMillis) {
         String relativeTime = getRelativeTime(timeInMillis, false);
@@ -59,6 +60,18 @@ public class Utils {
         } else {
             return formatDate(date.getTime(), SHORT_FULL_DATE);
         }
+    }
+
+    public static String formatDate(String date) {
+        SimpleDateFormat sFrom = new SimpleDateFormat(MYSQL_DATE_ONLY, Locale.getDefault());
+        SimpleDateFormat sTo = new SimpleDateFormat(FULL_DATE, Locale.getDefault());
+        String result = null;
+        try {
+            result = sTo.format(sFrom.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static long dateStringToTimeInMillis(String dateString, String format) {
