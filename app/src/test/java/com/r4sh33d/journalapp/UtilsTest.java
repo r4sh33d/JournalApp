@@ -8,7 +8,6 @@ import static junit.framework.Assert.assertEquals;
 
 public class UtilsTest {
 
-
     @Test
     public void formatDate() throws Exception {
         String expected = "12 November 2000";
